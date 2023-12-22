@@ -1037,3 +1037,4 @@ D:\Projects\MonkeyFinder\MonkeyFinder\obj\Debug\net7.0-android\lp\149\jl\files.c
 D:\Projects\MonkeyFinder\MonkeyFinder\obj\Debug\net7.0-android\lp\151\jl\files.cache
 D:\Projects\MonkeyFinder\MonkeyFinder\obj\Debug\net7.0-android\lp\153\jl\files.cache
 D:\Projects\MonkeyFinder\MonkeyFinder\obj\Debug\net7.0-android\lp\155\jl\files.cache
+D:\Projects\MonkeyFinder\MonkeyFinder\obj\Debug\net7.0-android\MonkeyFinder.sourcelink.json
