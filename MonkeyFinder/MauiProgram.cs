@@ -2,30 +2,36 @@
 using MonkeyFinder.Services;
 using MonkeyFinder.View;
 
-namespace MonkeyFinder;
-
-public static class MauiProgram
+namespace MonkeyFinder
 {
-    public static MauiApp CreateMauiApp()
+    public static class MauiProgram
     {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                });
 
 #if DEBUG
-        builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+            builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
+            builder.Services.AddSingleton<IMap>(Map.Default);
 
-        builder.Services.AddSingleton<MonkeyService>();
-        builder.Services.AddSingleton<MonkeysViewModel>();
-        builder.Services.AddTransient<MonkeyDetailsViewModel>();
-        builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddTransient<DetailsPage>();
+            builder.Services.AddSingleton<MonkeyService>();
+            builder.Services.AddSingleton<MonkeysViewModel>();
+            builder.Services.AddSingleton<MainPage>();
 
-        return builder.Build();
+            builder.Services.AddTransient<MonkeyDetailsViewModel>();
+            builder.Services.AddTransient<DetailsPage>();
+
+            return builder.Build();
+        }
     }
 }

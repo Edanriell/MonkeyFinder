@@ -22,8 +22,7 @@ public class MonkeyService
         var response = await httpClient.GetAsync("https://www.montemagno.com/monkeys.json");
         if (response.IsSuccessStatusCode)
         {
-            //monkeyList = await response.Content.ReadFromJsonAsync(MonkeyContext.Default.ListMonkey);
-            monkeyList = await response.Content.ReadFromJsonAsync<List<Monkey>>();
+            monkeyList = await response.Content.ReadFromJsonAsync(MonkeyContext.Default.ListMonkey);
         }
 
         // Offline
